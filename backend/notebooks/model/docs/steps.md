@@ -15,7 +15,7 @@ uv sync --project backend
 
 ### 3. Train the Model
 ```bash
-uv run --project backend python backend/notebooks/model/train_model.py
+uv run --project . python notebooks/model/train_model.py
 ```
 
 **Expected Output:**
@@ -24,8 +24,8 @@ uv run --project backend python backend/notebooks/model/train_model.py
 ✅ Cleaned. Missing: 0
 ✅ XGBoost trained!
 ✅ AUC Score: 0.7528
-✅ Saved: tax_risk_model.pkl
-✅ Saved: model_columns.pkl
+✅ Saved: .../backend/notebooks/model/models/tax_risk_model.pkl
+✅ Saved: .../backend/notebooks/model/models/model_columns.pkl
 ```
 
 ## What the Training Script Does
@@ -43,8 +43,8 @@ uv run --project backend python backend/notebooks/model/train_model.py
 - Achieves ~75% AUC on test set
 
 ### Artifacts Generated
-- `tax_risk_model.pkl` - Trained XGBoost model
-- `model_columns.pkl` - Feature names and order
+- `models/tax_risk_model.pkl` - Trained XGBoost model
+- `models/model_columns.pkl` - Feature names and order
 
 **Note:** These files are gitignored. Store in cloud or upload separately for deployment.
 
@@ -52,7 +52,7 @@ uv run --project backend python backend/notebooks/model/train_model.py
 
 After training:
 ```bash
-uv run --project backend python -m uvicorn backend.main:app --reload
+uv run --project . python -m uvicorn main:app --reload
 ```
 
 API available at: http://localhost:8000/docs

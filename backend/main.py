@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from backend.database import init_db
-from backend.routes import predict, auth, history
+from database import init_db
+from routes import predict, auth, history
 
 
 @asynccontextmanager

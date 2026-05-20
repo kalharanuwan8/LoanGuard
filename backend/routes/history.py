@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, Query
-from backend.database import predictions_col
-from backend.routes.auth import get_current_user
+from database import predictions_col
+from routes.auth import get_current_user
 from bson import ObjectId
 
 router = APIRouter(prefix="/history", tags=["History"])

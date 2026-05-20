@@ -43,14 +43,14 @@ uv run --project backend python backend/notebooks/model/train_model.py
 ✅ Cleaned. Missing: 0
 ✅ XGBoost trained!
 ✅ AUC Score: 0.7528
-✅ Saved: backend/notebooks/model/tax_risk_model.pkl
-✅ Saved: backend/notebooks/model/model_columns.pkl
+✅ Saved: backend/notebooks/model/models/tax_risk_model.pkl
+✅ Saved: backend/notebooks/model/models/model_columns.pkl
 ```
 
 ## Step 4: Model Artifacts
 After training, the following files are created:
-- `tax_risk_model.pkl` - Trained XGBoost model
-- `model_columns.pkl` - Feature column names and order
+- `models/tax_risk_model.pkl` - Trained XGBoost model
+- `models/model_columns.pkl` - Feature column names and order
 
 **⚠️ Important:** These pickles are ignored in `.gitignore`. Add them manually for deployment or store in cloud storage.
 
@@ -119,5 +119,5 @@ XGBClassifier(
 - `train_model.py` - Training script
 - `predict.py` - Inference module
 - `cs-training.csv` - Training data (not in repo)
-- `tax_risk_model.pkl` - Trained model (ignored)
-- `model_columns.pkl` - Feature metadata (ignored)
+- `models/tax_risk_model.pkl` - Trained model (ignored)
+- `models/model_columns.pkl` - Feature metadata (ignored)

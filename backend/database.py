@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 
 
-load_dotenv("backend/.env")
+load_dotenv(".env")
 
 MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017")
 DB_NAME   = os.getenv("DB_NAME", "homecredit_db")

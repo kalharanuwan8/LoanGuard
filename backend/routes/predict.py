@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
-from backend.schemas import LoanApplicant, PredictionResult
-from backend.database import predictions_col
-from backend.routes.auth import get_current_user
-from backend.notebooks.model.predict import predict_risk
+from schemas import LoanApplicant, PredictionResult
+from database import predictions_col
+from routes.auth import get_current_user
+from notebooks.model.predict import predict_risk
 from datetime import datetime
 
 router = APIRouter(prefix="/predict", tags=["Prediction"])

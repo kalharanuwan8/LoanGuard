@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
-from backend.database import users_col
-from backend.schemas import UserRegister, UserLogin, Token, UserOut
+from database import users_col
+from schemas import UserRegister, UserLogin, Token, UserOut
 from datetime import datetime, timedelta
 from bson import ObjectId
 from dotenv import load_dotenv
@@ -10,7 +10,7 @@ import bcrypt, jwt, os
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
-load_dotenv("backend/.env")
+load_dotenv(".env")
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM  = "HS256"
 TOKEN_EXP  = 60 * 24   # 24 hours in minutes

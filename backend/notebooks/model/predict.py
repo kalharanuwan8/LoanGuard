@@ -11,9 +11,10 @@ def _load_model():
     global _model, _model_columns
     if _model is None:
         base = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(base, 'tax_risk_model.pkl'), 'rb') as f:
+        models_dir = os.path.join(base, "models")
+        with open(os.path.join(models_dir, "tax_risk_model.pkl"), "rb") as f:
             _model = pickle.load(f)
-        with open(os.path.join(base, 'model_columns.pkl'), 'rb') as f:
+        with open(os.path.join(models_dir, "model_columns.pkl"), "rb") as f:
             _model_columns = pickle.load(f)
     return _model, _model_columns
 
