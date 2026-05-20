@@ -89,10 +89,10 @@ print(f"✅ AUC Score: {auc:.4f}")
 # ================================
 os.makedirs('model', exist_ok=True)
 
-with open('model/tax_risk_model.pkl', 'wb') as f:
+with open('model/models/tax_risk_model.pkl', 'wb') as f:
     pickle.dump(xgb, f)
 
-with open('model/model_columns.pkl', 'wb') as f:
+with open('model/models/model_columns.pkl', 'wb') as f:
     pickle.dump(FEATURES, f)
 
 print("✅ Saved: model/tax_risk_model.pkl")
