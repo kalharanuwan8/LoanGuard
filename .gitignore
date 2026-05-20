@@ -44,8 +44,6 @@ env/
 *.h5
 *.joblib
 *.parquet
-cs-training.csv
-*.csv
 
 # MongoDB
 .mongodb/
