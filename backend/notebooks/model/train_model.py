@@ -11,7 +11,15 @@ from xgboost import XGBClassifier
 # ================================
 # LOAD DATA
 # ================================
-df = pd.read_csv('cs-training.csv', index_col=0)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(base_dir, "cs-training.csv")
+if not os.path.exists(data_path):
+    raise FileNotFoundError(
+        "Training data not found. Place 'cs-training.csv' in "
+        "backend/notebooks/model/ or update the path in train_model.py."
+    )
+
+df = pd.read_csv(data_path, index_col=0)
 print(f"✅ Loaded: {df.shape}")
 
 # ================================
@@ -87,13 +95,17 @@ print(f"✅ AUC Score: {auc:.4f}")
 # ================================
 # SAVE
 # ================================
-os.makedirs('model', exist_ok=True)
+models_dir = os.path.join(base_dir, "models")
+os.makedirs(models_dir, exist_ok=True)
 
-with open('model/models/tax_risk_model.pkl', 'wb') as f:
+model_path = os.path.join(models_dir, "tax_risk_model.pkl")
+columns_path = os.path.join(models_dir, "model_columns.pkl")
+
+with open(model_path, "wb") as f:
     pickle.dump(xgb, f)
 
-with open('model/models/model_columns.pkl', 'wb') as f:
+with open(columns_path, "wb") as f:
     pickle.dump(FEATURES, f)
 
-print("✅ Saved: model/tax_risk_model.pkl")
-print("✅ Saved: model/model_columns.pkl")
+print(f"✅ Saved: {model_path}")
+print(f"✅ Saved: {columns_path}")

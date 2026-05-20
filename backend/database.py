@@ -6,8 +6,8 @@ import os
 
 load_dotenv("backend/.env")
 
-MONGO_URL = os.getenv("MONGO_URL")
-DB_NAME   = os.getenv("DB_NAME")
+MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017")
+DB_NAME   = os.getenv("DB_NAME", "homecredit_db")
 client = AsyncIOMotorClient(MONGO_URL)
 db     = client[DB_NAME]
 
