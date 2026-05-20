@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Navbar from '../components/Navbar'
 import RiskBadge from '../components/RiskBadge'
 import api from '../lib/api'
@@ -13,9 +13,7 @@ export default function History() {
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState(null)   // for detail modal
 
-  useEffect(() => { fetchHistory() }, [page])
-
-  const fetchHistory = async () => {
+  const fetchHistory = useCallback(async () => {
     setLoading(true)
     try {
       const { data } = await api.get('/history', {
@@ -26,7 +24,9 @@ export default function History() {
     } catch (err) {
       console.error(err)
     } finally { setLoading(false) }
-  }
+  }, [page])
+
+  useEffect(() => { fetchHistory() }, [page])
 
   const totalPages = Math.ceil(total / PAGE_SIZE)
 
